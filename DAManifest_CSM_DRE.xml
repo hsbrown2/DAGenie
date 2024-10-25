@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <DAManifest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-	<DistributedApplication ApplicationName="Cherwell.Service.Management">
+	<DistributedApplication ApplicationName="DA.Name.No.Spaces">
 		<Collections>
 			<Collection Class="<My.Application.Custom.Class>" Type="Application">	
 				<Instance ServerName="<Server that hosts my class>" ClassProperty="" />
