@@ -1,6 +1,6 @@
 # Distributed-Application.Genie
 ## SYNOPSIS
-This script will Management Packs containing Distributed Applications based on a simple .xml input file.
+This script will generate Management Packs containing Distributed Applications based on a simple .xml input file.
 
 ## SYNTAX
 ```powershell
