@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DAManifest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<DistributedApplication ApplicationName="Cherwell.Service.Management">
+		<Collections>
+			<Collection Class="<My.Application.Custom.Class>" Type="Application">	
+				<Instance ServerName="<Server that hosts my class>" ClassProperty="" />
+				<Instance ServerName="<Server that hosts my class>" ClassProperty="" />
+			</Collection>
+			<Collection Class="System.Database" Type="Databases">	
+				<Instance ServerName="<Server that hosts my database>" ClassProperty="<MyDatabaseName>" />
+				<Instance ServerName="<Server that hosts my database>" ClassProperty="<MyDatabaseName>" />
+			</Collection>
+			<Collection Class="Microsoft.SQLServer.Core.AvailabilityGroup" Type="AvailabilityGroup">	
+				<Instance ServerName="<Name of AG>" ClassProperty="{<AG UniqueID}" />
+			</Collection>			
+			<Collection Class="System.WebSite" Type="Web Sites">	
+				<Instance ServerName="<IIS Server that hosts my web site>" ClassProperty="<Web Site ID (i.e. W3SVC/1)>" />
+				<Instance ServerName="<IIS Server that hosts my web site>" ClassProperty="<Web Site ID (i.e. W3SVC/1)>" />
+			</Collection>
+			<Collection Class="URLGenie.HttpRequest.Seed" Type="URL Monitors">	
+				<Instance ServerName="" ClassProperty="<GroupID of URL Genie monitors>" />
+			</Collection>
+			<Collection Class="<Any Valid Class>" Type="<Freeform name to display for this class>">	
+				<Instance ServerName="<Valid object Name where this class is dicovered>" ClassProperty="<Valid object Path where this class is dicovered>" />
+			</Collection>			
+		</Collections>
+		<Images>
+			<Image Class="<My.Application.Custom.Class>" FilePath="<C:\Images\MYAPPicon16.jpg>" FileSize="Small" />
+			<Image Class="<My.Application.Custom.Class>" FilePath="<C:\Images\MYAPPicon80.jpg>" FileSize="Large" />
+		</Images>
+	</DistributedApplication>
+</DAManifest>	
+
+ 

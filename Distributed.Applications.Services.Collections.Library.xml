@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ManagementPack ContentReadable="true" SchemaVersion="2.0" OriginalSchemaVersion="1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+	<Manifest>
+		<Identity>
+			<ID>Distributed.Applications.Services.Collections.Library</ID>
+			<Version>1.0.0.8</Version>
+		</Identity>
+		<Name>Distributed Applications Services &amp; Collections Library</Name>
+		<References>
+			<Reference Alias="SCLibrary">
+				<ID>Microsoft.SystemCenter.Library</ID>
+				<Version>7.0.8443.6</Version>
+				<PublicKeyToken>31bf3856ad364e35</PublicKeyToken>
+			</Reference>
+			<Reference Alias="Health">
+				<ID>System.Health.Library</ID>
+				<Version>7.0.8443.6</Version>
+				<PublicKeyToken>31bf3856ad364e35</PublicKeyToken>
+			</Reference>
+			<Reference Alias="System">
+				<ID>System.Library</ID>
+				<Version>7.5.8500.0</Version>
+				<PublicKeyToken>31bf3856ad364e35</PublicKeyToken>
+			</Reference>
+		</References>
+	</Manifest>
+	<TypeDefinitions>
+		<EntityTypes>
+			<ClassTypes>
+				<ClassType ID="Distributed.Applications.Services.Collections.GenericService" Accessibility="Public" Abstract="true" Base="Distributed.Applications.Services.Collections.Service" Hosted="false" Singleton="false" Extension="false" />
+				<ClassType ID="Distributed.Applications.Services.Collections.Service" Accessibility="Public" Abstract="true" Base="System!System.Service" Hosted="false" Singleton="false" Extension="false" />
+				<ClassType ID="Distributed.Applications.Services.Collections.Collection" Accessibility="Public" Abstract="true" Base="System!System.LogicalEntity" Hosted="false" Singleton="false" Extension="false" />
+			</ClassTypes>
+			<RelationshipTypes>
+				<RelationshipType ID="Distributed.Applications.Services.Collections.ServiceIncludesCollection" Accessibility="Public" Abstract="false" Base="System!System.Membership">
+					<Source ID="Source" MinCardinality="0" MaxCardinality="2147483647" Type="System!System.Service" />
+					<Target ID="Target" MinCardinality="0" MaxCardinality="2147483647" Type="Distributed.Applications.Services.Collections.Collection" />
+				</RelationshipType>
+			</RelationshipTypes>
+		</EntityTypes>
+	</TypeDefinitions>
+	<Monitoring>
+		<Monitors>
+			<DependencyMonitor ID="Distributed.Applications.Services.Collections.GenericServiceHealth" Accessibility="Public" Enabled="false" Target="Distributed.Applications.Services.Collections.GenericService" ParentMonitorID="Health!System.Health.AvailabilityState" Remotable="true" Priority="Normal" RelationshipType="System!System.Containment" MemberMonitor="Health!System.Health.EntityState">
+				<Category>AvailabilityHealth</Category>
+				<Algorithm>WorstOf</Algorithm>
+				<MemberUnAvailable>Error</MemberUnAvailable>
+			</DependencyMonitor>
+			<DependencyMonitor ID="Distributed.Applications.Services.Collections.ServiceHealthAvailabilityRollup" Accessibility="Internal" Enabled="true" Target="Distributed.Applications.Services.Collections.Service" ParentMonitorID="Health!System.Health.AvailabilityState" Remotable="true" Priority="Normal" RelationshipType="System!System.Containment" MemberMonitor="Health!System.Health.AvailabilityState">
+				<Category>AvailabilityHealth</Category>
+				<Algorithm>WorstOf</Algorithm>
+				<MemberUnAvailable>Error</MemberUnAvailable>
+			</DependencyMonitor>
+		</Monitors>
+	</Monitoring>
+	<Presentation>
+		<Views>
+			<View ID="Distributed.Applications.Services.Collections.DynamicDiagram.View" Accessibility="Internal" Enabled="true" Target="Distributed.Applications.Services.Collections.Service" TypeID="SCLibrary!Microsoft.SystemCenter.DiagramViewType" Visible="false">
+				<Category>Operations</Category>
+				<Criteria></Criteria>
+				<Presentation>
+					<DiagramViewCriteria>
+						<DiagramMonitoringClass>
+							<ID>$MPElement[Name="Distributed.Applications.Services.Collections.Service"]$</ID>
+							<ContainmentStyle>Box</ContainmentStyle>
+							<LevelsToShow>2</LevelsToShow>
+						</DiagramMonitoringClass>
+						<DiagramMonitoringClass>
+							<ID>$MPElement[Name="Distributed.Applications.Services.Collections.Collection"]$</ID>
+							<ContainmentStyle>Box</ContainmentStyle>
+							<LevelsToShow>1</LevelsToShow>
+						</DiagramMonitoringClass>
+					</DiagramViewCriteria>
+				</Presentation>
+			</View>
+		</Views>
+	</Presentation>
+	<LanguagePacks>
+		<LanguagePack ID="ENU" IsDefault="true">
+			<DisplayStrings>
+				<DisplayString ElementID="Distributed.Applications.Services.Collections.Collection">
+					<Name>Distributed Application Service &amp; Collections Component</Name>
+					<Description>All component collections edited or created using the constructs in this management pack inherit from this class.</Description>
+				</DisplayString>
+				<DisplayString ElementID="Distributed.Applications.Services.Collections.DynamicDiagram.View">
+					<Name>Distributed Application Service &amp; Collections Dynamic Diagram View</Name>
+					<Description>Distributed Application Service &amp; Collections Dynamic Diagram View</Description>
+				</DisplayString>
+				<DisplayString ElementID="Distributed.Applications.Services.Collections.GenericService">
+					<Name>Blank</Name>
+					<Description>This distributed application is used for general purposes. This template will allow you to start from a blank slate and compose your distributed application from the ground up.</Description>
+				</DisplayString>
+				<DisplayString ElementID="Distributed.Applications.Services.Collections.GenericServiceHealth">
+					<Name>Blank Distributed Application Service &amp; Collections Health Roll-up</Name>
+					<Description>This monitor rolls up health from all component collections defined by the user.</Description>
+				</DisplayString>
+				<DisplayString ElementID="Distributed.Applications.Services.Collections.Library">
+					<Name>Distributed Application Services &amp; Collections Library</Name>
+					<Description>Distributed Application Services &amp; Collections Library: Contains generic collection and services definitions.</Description>
+				</DisplayString>
+				<DisplayString ElementID="Distributed.Applications.Services.Collections.Service">
+					<Name>Distributed Application</Name>
+					<Description>All distributed applications edited or created with the Distributed Application Service &amp; Collections Management Pack inherit from this class.</Description>
+				</DisplayString>
+				<DisplayString ElementID="Distributed.Applications.Services.Collections.ServiceHealthAvailabilityRollup">
+					<Name>All Contained Objects</Name>
+				</DisplayString>
+				<DisplayString ElementID="Distributed.Applications.Services.Collections.ServiceIncludesCollection">
+					<Name>Has Collection</Name>
+					<Description>Relationship between a service and the collections that it contains</Description>
+				</DisplayString>
+			</DisplayStrings>
+		</LanguagePack>
+	</LanguagePacks>
+</ManagementPack>
